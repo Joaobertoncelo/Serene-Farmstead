@@ -6,13 +6,52 @@ public class NPC_Dialogue : MonoBehaviour
 {
     public float dialogueRange;
     public LayerMask PlayerLayer;
+
+    public DialogueSettings currentDialogue;
+
+    public bool playerHit;
+
+    private List<string> sentences = new List<string>();
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        GetNpcInfo();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && playerHit)
+        {
+            DialogueController.instance.Speech(sentences.ToArray());
+        }
+    }
+
+    void GetNpcInfo()
+    {
+        for(int i = 0; i < currentDialogue.actorSpeech.Count; i++)
+        {
+            switch (DialogueController.instance.selectedLanguage)
+            {
+                case DialogueController.language.pt:
+                    sentences.Add(currentDialogue.actorSpeech[i].language.portuguese);
+                    break;
+                case DialogueController.language.eng:
+                    sentences.Add(currentDialogue.actorSpeech[i].language.english);
+                    break;
+                case DialogueController.language.spa:
+                    sentences.Add(currentDialogue.actorSpeech[i].language.spanish);
+                    break;
+                case DialogueController.language.fra:
+                    sentences.Add(currentDialogue.actorSpeech[i].language.french);
+                    break;
+                case DialogueController.language.ger:
+                    sentences.Add(currentDialogue.actorSpeech[i].language.german);
+                    break;
+            }
+        }
+    }
+
     void FixedUpdate()
     {
         ShowDialogue();
@@ -24,11 +63,14 @@ public class NPC_Dialogue : MonoBehaviour
         
         if (playerDetector != null)
         {
-            Debug.Log("Player Detected");
+            playerHit = true;
         }
         else
         {
-
+            playerHit = false;
+            DialogueController.instance.dialogueObject.SetActive(false);
+            DialogueController.instance.isDialogueVisible = false;
+            DialogueController.instance.speechText.text = "";
         }
     }
 
