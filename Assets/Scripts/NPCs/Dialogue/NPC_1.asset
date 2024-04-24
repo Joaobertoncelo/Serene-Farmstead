@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50aebe92ab064c4ba6a458fba2bfdf5, type: 3}
+  m_Name: NPC_1
+  m_EditorClassIdentifier: 
+  actor: {fileID: 0}
+  speakerSprite: {fileID: 0}
+  actorText: 
+  ActorSpeech:
+  - actorName: Homem Misterioso
+    actorProfilePicture: {fileID: 0}
+    language:
+      portuguese: "Ol\xE1, tudo bem?"
+      english: 
+      spanish: 
+      french: 
+      german: 
+  - actorName: "Her\xF3i"
+    actorProfilePicture: {fileID: -2118932584, guid: 59365e46cd430524bbcb14e18c206e54, type: 3}
+    language:
+      portuguese: "Ol\xE1, tudo sim, e voc\xEA?"
+      english: 
+      spanish: 
+      french: 
+      german: 
+  - actorName: Homem Misterioso
+    actorProfilePicture: {fileID: 0}
+    language:
+      portuguese: "Espera... Voc\xEA \xE9... UM HER\xD3I! FINALMENTE UM HER\xD3I!"
+      english: 
+      spanish: 
+      french: 
+      german: 
