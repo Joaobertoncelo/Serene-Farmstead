@@ -28,13 +28,25 @@ public class DialogueController : MonoBehaviour
     public float typingSpeed;
 
     private bool _isDialogueVisible;
-    private int index;
-    private string[] currentSentences;
+    private int _index;
+    private string[] _currentSentences;
 
     public bool isDialogueVisible
     {
         get { return _isDialogueVisible; }
         set { _isDialogueVisible = value; }
+    }
+
+    public int index
+    {
+        get { return _index; }
+        set { _index = value; }
+    }
+
+    public string[] currentSentences
+    {
+        get { return _currentSentences; }
+        set { _currentSentences  = value; }
     }
 
     public static DialogueController instance;
@@ -56,7 +68,7 @@ public class DialogueController : MonoBehaviour
 
     IEnumerator TypeSentence()
     {
-        foreach (char letter in currentSentences[index].ToCharArray())
+        foreach (char letter in _currentSentences[_index].ToCharArray())
         {
             speechText.text += letter;
             yield return new WaitForSeconds(typingSpeed);
@@ -65,20 +77,20 @@ public class DialogueController : MonoBehaviour
 
     public void NextSentence()
     {
-        if(speechText.text == currentSentences[index])
+        if(speechText.text == _currentSentences[_index])
         {
-            if(index < currentSentences.Length - 1)
+            if(_index < _currentSentences.Length - 1)
             {
-                index++;
+                _index++;
                 speechText.text = "";
                 StartCoroutine(TypeSentence());
             }
             else
             {
                 speechText.text = "";
-                index = 0;
+                _index = 0;
                 dialogueObject.SetActive(false);
-                currentSentences = null;
+                _currentSentences = null;
                 _isDialogueVisible = false;
             }
         }
@@ -89,7 +101,7 @@ public class DialogueController : MonoBehaviour
         if(!_isDialogueVisible)
         {
             dialogueObject.SetActive(true);
-            currentSentences = txt;
+            _currentSentences = txt;
             StartCoroutine(TypeSentence());
             _isDialogueVisible = true;
         }

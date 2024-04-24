@@ -71,6 +71,8 @@ public class NPC_Dialogue : MonoBehaviour
             DialogueController.instance.dialogueObject.SetActive(false);
             DialogueController.instance.isDialogueVisible = false;
             DialogueController.instance.speechText.text = "";
+            DialogueController.instance.index = 0;
+            DialogueController.instance.currentSentences = null;
         }
     }
 
