@@ -9,7 +9,7 @@ public class Tree : MonoBehaviour
     [SerializeField] private Animator animator;
 
     [SerializeField] private GameObject woodPrefab;
-    [SerializeField] private int numberOfWoodsCreatedOnChop;
+    private int numberOfWoodsCreatedOnChop;
 
     [SerializeField] private ParticleSystem leafs;
 
@@ -36,6 +36,7 @@ public class Tree : MonoBehaviour
 
         if(treeHealth <= 0)
         {
+            numberOfWoodsCreatedOnChop = Random.Range(2, 4);
             for(int i = 0; i < numberOfWoodsCreatedOnChop; i++)
             {
                 Instantiate(woodPrefab, transform.position + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f), transform.rotation);
