@@ -14,7 +14,11 @@ public class Player : MonoBehaviour
     private bool _isRunning;
     private bool _isRolling;
     private bool _isCutting;
+    private bool _isDigging;
+    private bool _isWatering;
     private Vector2 _direction;
+
+    private int handlingObject;
 
     public Vector2 direction
     {
@@ -39,6 +43,17 @@ public class Player : MonoBehaviour
         get { return _isCutting; }
         set { _isCutting= value; }
     }
+    public bool isDigging
+    {
+        get { return _isDigging; }
+        set { _isDigging = value; }
+    }
+
+    public bool isWatering
+    {
+        get { return _isWatering; }
+        set { _isWatering = value; }
+    }
 
     private void Start()
     {
@@ -48,10 +63,32 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            handlingObject = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            handlingObject = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            handlingObject = 2;
+        }
         OnInput();
         OnRun();
         OnRolling();
-        OnCutting();
+
+        if(handlingObject == 0)
+        {
+            OnCutting();
+        }else if(handlingObject == 1)
+        {
+            OnDigging();
+        }else if (handlingObject == 2)
+        {
+            OnWatering();
+        }
     }
 
     private void FixedUpdate()
@@ -114,6 +151,34 @@ public class Player : MonoBehaviour
         {
             speed = initialSpeed;
             _isCutting = false;
+        }
+    }
+
+    void OnDigging()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            speed = 0.5f;
+            _isDigging = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            speed = initialSpeed;
+            _isDigging = false;
+        }
+    }
+
+    void OnWatering()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            speed = 0.5f;
+            _isWatering = true;
+        }
+        if (Input.GetMouseButtonUp(0))
+        {
+            speed = initialSpeed;
+            _isWatering = false;
         }
     }
 

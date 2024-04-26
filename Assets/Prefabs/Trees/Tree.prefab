@@ -227,10 +227,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5363f34d4ccd9743b0774526ef72eb8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treeHealth: 10
+  treeHealth: 6
   animator: {fileID: 7706280052362691775}
   woodPrefab: {fileID: 7058127346493824295, guid: 2b178861e9ad93c479a2fe0cc73a99af, type: 3}
-  numberOfWoodsCreatedOnChop: 3
   leafs: {fileID: 4578743940020310751}
 --- !u!1 &8020323215813829615
 GameObject:
