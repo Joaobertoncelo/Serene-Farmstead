@@ -29,7 +29,7 @@ public class Wood : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player")) {
-            collision.GetComponent<PlayerItems>().TotalWood++;
+            collision.GetComponent<PlayerItems>().currentWood++;
             Destroy(gameObject);
         }
     }

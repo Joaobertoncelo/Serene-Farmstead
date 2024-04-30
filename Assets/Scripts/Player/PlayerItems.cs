@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
-    [SerializeField] private int totalWood;
+    [Header("Current Values")]
+    [SerializeField] private int _currentWood;
     [SerializeField] private int _currentCarrots;
-    [SerializeField] private float currentWater;
-    [SerializeField] private float waterLimit;
+    [SerializeField] private float _currentWater;
+    [Header("Limits")]
+    private float _waterLimit = 50;
+    private float _woodLimit = 10;
+    private float _carrotsLimit = 10;
 
-    public int currentCarrots
-    {
-        get { return _currentCarrots; }
-        set { _currentCarrots = value; }
-    }
-
-    public int TotalWood { get => totalWood; set { totalWood = value; } }
-    public float CurrentWater { get => currentWater; set { currentWater = value; } }
-
-    public void WaterLimit(float water)
+    public int currentWood { get => _currentWood; set { _currentWood = value; } }
+    public float currentWater { get => _currentWater; set { _currentWater = value; } }
+    public int currentCarrots { get => _currentCarrots; set => _currentCarrots = value; }
+ 
+    public float waterLimit { get => _waterLimit; set => _waterLimit = value; }
+    public float woodLimit { get => _woodLimit; set => _woodLimit = value; }
+    public float carrotsLimit { get => _carrotsLimit; set => _carrotsLimit = value; }
+    
+    public void ControlMaxWater(float water)
     {
         if (currentWater < waterLimit)
         {

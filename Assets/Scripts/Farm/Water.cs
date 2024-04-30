@@ -20,7 +20,7 @@ public class Water : MonoBehaviour
     {
         if (detectingPlayer && Input.GetKeyDown(KeyCode.E))
         {
-            player.WaterLimit(waterValue);
+            player.ControlMaxWater(waterValue);
         }
     }
 

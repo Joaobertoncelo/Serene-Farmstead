@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private bool _isWatering;
     private Vector2 _direction;
 
-    private int handlingObject;
+    private int _handlingObject;
 
     public Vector2 direction
     {
@@ -57,6 +57,8 @@ public class Player : MonoBehaviour
         set { _isWatering = value; }
     }
 
+    public int handlingObject { get => _handlingObject; set => _handlingObject = value; }
+
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour
         {
             handlingObject = 2;
         }
+
         OnInput();
         OnRun();
         OnRolling();
@@ -173,19 +176,19 @@ public class Player : MonoBehaviour
 
     void OnWatering()
     {
-        if (Input.GetMouseButtonDown(0) && playerItems.CurrentWater > 0)
+        if (Input.GetMouseButtonDown(0) && playerItems.currentWater > 0)
         {
             speed = 0.5f;
             _isWatering = true;
         }
-        if (Input.GetMouseButtonUp(0) || playerItems.CurrentWater <= 0)
+        if (Input.GetMouseButtonUp(0) || playerItems.currentWater <= 0)
         {
             speed = initialSpeed;
             _isWatering = false;
         }
         if(_isWatering)
         {
-            playerItems.CurrentWater -= 0.01f;
+            playerItems.currentWater -= 0.01f;
         }
     }
 
