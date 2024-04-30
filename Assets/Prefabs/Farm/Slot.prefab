@@ -179,3 +179,5 @@ MonoBehaviour:
   hole: {fileID: 1334388494, guid: 5c57c72312d6b3242a8884c8965657bd, type: 3}
   carrot: {fileID: -1658863897, guid: 5c57c72312d6b3242a8884c8965657bd, type: 3}
   digAmount: 4
+  waterAmount: 2
+  detectingWater: 0

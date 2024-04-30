@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float rollSpeed;
 
     private Rigidbody2D rig;
+    private PlayerItems playerItems;
 
     private float initialSpeed;
     private bool _isRunning;
@@ -43,6 +44,7 @@ public class Player : MonoBehaviour
         get { return _isCutting; }
         set { _isCutting= value; }
     }
+
     public bool isDigging
     {
         get { return _isDigging; }
@@ -58,6 +60,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        playerItems = GetComponent<PlayerItems>();
         initialSpeed = speed;
     }
 
@@ -170,15 +173,19 @@ public class Player : MonoBehaviour
 
     void OnWatering()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && playerItems.CurrentWater > 0)
         {
             speed = 0.5f;
             _isWatering = true;
         }
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) || playerItems.CurrentWater <= 0)
         {
             speed = initialSpeed;
             _isWatering = false;
+        }
+        if(_isWatering)
+        {
+            playerItems.CurrentWater -= 0.01f;
         }
     }
 

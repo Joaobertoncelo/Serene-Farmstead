@@ -1,0 +1,3 @@
+Problemas a melhorar Serene farmstead
+1- current water pode ser negativo
+2- Organizar variáveis com Headers
