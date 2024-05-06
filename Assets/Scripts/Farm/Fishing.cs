@@ -6,6 +6,7 @@ public class Fishing : MonoBehaviour
 {
     [SerializeField] private bool detectingPlayer;
     [SerializeField] private int fishProbability;
+    [SerializeField] private GameObject fishPrefab;
 
     private PlayerAnimation playerAnimation;
     private PlayerItems player;
@@ -30,7 +31,7 @@ public class Fishing : MonoBehaviour
 
         if (randomValue <= fishProbability)
         {
-            Debug.Log("pescou");
+            Instantiate(fishPrefab, player.transform.position + new Vector3(Random.Range(-2, -1f), Random.Range(0, 2f), 0f), Quaternion.identity);
         }
         else
         {

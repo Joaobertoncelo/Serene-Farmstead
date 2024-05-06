@@ -9,6 +9,7 @@ public class HUDController : MonoBehaviour
     [SerializeField] private Image waterUIBar;
     [SerializeField] private Image woodUIBar;
     [SerializeField] private Image carrotUIBar;
+    [SerializeField] private Image fishUIBar;
 
     [Header("Tools")]
     //[SerializeField] private Image axeUI;
@@ -34,6 +35,7 @@ public class HUDController : MonoBehaviour
         waterUIBar.fillAmount = 0f;
         woodUIBar.fillAmount = 0f;
         carrotUIBar.fillAmount = 0f;
+        fishUIBar.fillAmount = 0f;
     }
 
     // Update is called once per frame
@@ -42,6 +44,7 @@ public class HUDController : MonoBehaviour
         waterUIBar.fillAmount = playerItems.currentWater / playerItems.waterLimit;
         woodUIBar.fillAmount = playerItems.currentWood / playerItems.woodLimit;
         carrotUIBar.fillAmount = playerItems.currentCarrots / playerItems.carrotsLimit;
+        fishUIBar.fillAmount = playerItems.currentFishes / playerItems.fishesLimit;
         
         //Nota: Otimizar processos chamando-os apenas quando são alterados
         for (int i = 0; i < toolsUI.Count; i++)
