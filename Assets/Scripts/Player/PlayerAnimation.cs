@@ -7,14 +7,15 @@ public class PlayerAnimation : MonoBehaviour
     private Player player;
     private Animator animator;
 
-    // Start is called before the first frame update
+    private Fishing fishing;
+
     void Start()
     {
         player = GetComponent<Player>();
         animator = GetComponent<Animator>();
+        fishing = FindObjectOfType<Fishing>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         OnMove();
@@ -88,6 +89,22 @@ public class PlayerAnimation : MonoBehaviour
         {
             animator.SetInteger("transition", 5);
         }
+    }
+
+    #endregion
+
+    #region Fishing
+
+    public void OnStartFishing()
+    {
+        animator.SetTrigger("isCasting");
+        player.stopPlayer = true;
+    }
+
+    public void OnEndFishing()
+    {
+        fishing.OnFishing();
+        player.stopPlayer = false;
     }
 
     #endregion
