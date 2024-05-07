@@ -4,17 +4,17 @@ using UnityEngine;
 
 public class Fishing : MonoBehaviour
 {
-    [SerializeField] private bool detectingPlayer;
     [SerializeField] private int fishProbability;
     [SerializeField] private GameObject fishPrefab;
 
+    private bool detectingPlayer;
     private PlayerAnimation playerAnimation;
-    private PlayerItems player;
+    private PlayerItems playerItems;
 
     void Start()
     {
-        player = FindObjectOfType<PlayerItems>();
-        playerAnimation = player.GetComponent<PlayerAnimation>();
+        playerItems = FindObjectOfType<PlayerItems>();
+        playerAnimation = playerItems.GetComponent<PlayerAnimation>();
     }
 
     void Update()
@@ -31,7 +31,7 @@ public class Fishing : MonoBehaviour
 
         if (randomValue <= fishProbability)
         {
-            Instantiate(fishPrefab, player.transform.position + new Vector3(Random.Range(-2, -1f), Random.Range(0, 2f), 0f), Quaternion.identity);
+            Instantiate(fishPrefab, playerItems.transform.position + new Vector3(Random.Range(-2, -1f), Random.Range(0, 2f), 0f), Quaternion.identity);
         }
         else
         {

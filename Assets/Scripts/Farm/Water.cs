@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Water : MonoBehaviour
 {
-    [SerializeField] private bool detectingPlayer;
     [SerializeField] private int waterValue;
 
-    private PlayerItems player;
+    private bool detectingPlayer;
+    private PlayerItems playerItems;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerItems>();
+        playerItems = FindObjectOfType<PlayerItems>();
     }
 
     // Update is called once per frame
@@ -20,7 +20,7 @@ public class Water : MonoBehaviour
     {
         if (detectingPlayer && Input.GetKeyDown(KeyCode.E))
         {
-            player.ControlMaxWater(waterValue);
+            playerItems.ControlMaxWater(waterValue);
         }
     }
 
